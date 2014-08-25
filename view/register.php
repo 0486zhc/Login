@@ -27,7 +27,7 @@
 
 	<div class="container width80 pt20">
 		<form name="register" method="post"
-			action="user_register"
+			action="../app/controller/registerAction.php"
 			id="aspnetForm" class="form-horizontal">
 			<div>
 				<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET"
@@ -60,44 +60,32 @@
 					value="/wEWBQLZmqilDgLJ4fq4BwL90KKTCAKqkJ77CQKI+JrmBdPJophKZ3je4aKMtEkXL+P8oASc" />
 			</div> -->
 			<div class="control-group">
-				账号：<input name="patMasterIndex.idNo" type="text"
+				账号：<input name="userName" type="text"
 					id="ctl00_ContentPlaceHolder1_txtUserName" class="input width100 "
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入身份证" />
 			</div>
 			<div class="control-group">
-				密码：<input name="patMasterIndex.password" type="password"
+				密码：<input name="password" type="password"
 					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入密码" />
 			</div>
 			<div class="control-group">
-				姓名：<input name="patMasterIndex.name" type="text"
+				姓名：<input name="name" type="text"
 					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入姓名" />
 			</div>
 			<div class="control-group">
-				性别：<input name="patMasterIndex.sex" type="text"
+				性别：<input name="sex" type="text"
 					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入性别" />
 			</div>
 			
 			<div class="control-group">
-			  <li>
-                  	出生日期&nbsp;<br>
-                  <select  id="_birthyear" style="width:65px;" name="year"></select>年
-                      <select  id="_birthmonth"  style="width:65px;"name="month"></select>月
-                      <select  id="_birthday"  style="width:65px;"name="day"></select>日
-              
-            </li>
-			
-			</div>
-			
-			
-			<div class="control-group">
-				联系方式：<input name="patMasterIndex.phoneNumberHome" type="text"
+				联系方式：<input name="mobile" type="text"
 					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入手机号码" />

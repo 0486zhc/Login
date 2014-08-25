@@ -3,35 +3,57 @@ require_once ("../../db/db.class.php");
 
 class User {
 	
-	public $name = NULL;
+	public $userName = NULL;
 	public $password = NULL;
-
+	public $name = null;
+	public $sex = null;
+	public $mobile= null;
+	
 	/**
 	 * 构造函数
 	 */
-	public function __construct($name, $password) {
-		$this->name = $name;
+	public function __construct() {
+		$a=func_get_args();  // 数组 array
+        $i=func_num_args();  // 参数个数
+        
+        if(method_exists($this,$f='__construct'.$i)){    //检查类方法是否存在
+          call_user_func_array(array($this,$f),$a);     // 返回参数个数对应的函数
+      } 
+	}
+	
+	// 两个参数
+	public function __construct2($userName, $password) {
+		$this->userName = $userName;
 		$this->password = $password;
+	}
+	
+	// 5个参数
+	public function __construct5($userName,$password,$name=null,$sex,$mobile) {
+		$this->userName = $userName;
+		$this->password = $password;
+		$this->name = $name;
+		$this->sex = $sex;
+		$this->mobile= $mobile;
 	}
 
 	public function insert() {
 		$db = new DB();
-		$resultid = $db->insertData("user", array (), array (
-			'',
-			$this->name,
-			'',
+		$fields = array("userName","password","name","sex","mobile");
+		$resultid = $db->insertData("user", $fields, array (
+			$this->userName,
 			$this->password,
-			''
+			$this->name,
+			$this->sex ,
+			$this->mobile,
 		));
 		return $resultid;
 	}
 
 	public function isRegister(){
 		$db = new DB();
-		echo $this->name;
-		$name = $this->name;
+		$userName = $this->userName;
 		$password = $this->password;
-		@ $data = $db->getObjListBySql("SELECT * FROM user WHERE name = '$name' and password = '$password' ");
+		@ $data = $db->getObjListBySql("SELECT * FROM user WHERE userName = '$userName' and password = '$password' ");
 		if (count($data) != 0)
 			return true;
 		else
@@ -43,9 +65,9 @@ class User {
 		return $db->getDataByAtr("user", 'id', $uid);
 	}
 
-	public static function getUserByName($name) {
+	public static function getUserByName($userName) {
 		$db = new DB();
-		@ $data = $db->getObjListBySql("SELECT * FROM user WHERE name = '$name'");
+		@ $data = $db->getObjListBySql("SELECT * FROM user WHERE userName = '$userName'");
 		if (count($data) != 0)
 			return $data;
 		else

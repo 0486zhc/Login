@@ -1,5 +1,8 @@
 <?php
-    require_once 'config.php';   //引入配置常量文件
+	define('basePath',$_SERVER['DOCUMENT_ROOT']);
+    require_once(basePath."/Login/db/config.php");   //引入配置常量文件
+    
+    
     date_default_timezone_set(TIMEZONE);  
 	
 	/**
@@ -88,11 +91,22 @@
 				}
 			}
 			$sql .= ' )';
+			echo $sql."<br/>";
 			$this->open();
-			mysql_query($sql,$this->conn);
-			$id = mysql_insert_id($this->conn);
-			$this->close();
-			return $id;
+//			mysql_query($sql,$this->conn);
+//			$id = mysql_insert_id($this->conn);
+//			$this->close();
+			if(mysql_query($sql,$this->conn)){
+					return 1;
+			}else{
+				
+				echo "执行SQL失败:$sql<BR>错误:".mysql_error()."<br/>";
+				return 0;
+			}
+			
+						
+
+//			return $id;
 		}
 		
 		/**
