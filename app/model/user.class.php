@@ -8,6 +8,8 @@ class User {
 	public $name = null;
 	public $sex = null;
 	public $mobile= null;
+	public $webChatId = null;
+	
 	
 	/**
 	 * 构造函数
@@ -28,23 +30,34 @@ class User {
 	}
 	
 	// 5个参数
-	public function __construct5($userName,$password,$name=null,$sex,$mobile) {
+	public function __construct5($userName,$password,$name,$sex,$mobile) {
 		$this->userName = $userName;
 		$this->password = $password;
 		$this->name = $name;
 		$this->sex = $sex;
 		$this->mobile= $mobile;
 	}
+	
+	// 6个参数
+	public function __construct6($userName,$password,$name,$sex,$mobile,$webChatId) {
+		$this->userName = $userName;
+		$this->password = $password;
+		$this->name = $name;
+		$this->sex = $sex;
+		$this->mobile= $mobile;
+		$this->webChatId;
+	}
 
 	public function insert() {
 		$db = new DB();
-		$fields = array("userName","password","name","sex","mobile");
+		$fields = array("userName","password","name","sex","mobile","webChat_id");
 		$resultid = $db->insertData("user", $fields, array (
 			$this->userName,
 			$this->password,
 			$this->name,
 			$this->sex ,
 			$this->mobile,
+			$this->webChatId,
 		));
 		return $resultid;
 	}

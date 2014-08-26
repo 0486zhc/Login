@@ -13,7 +13,7 @@
 </head>
 <body>
  <div class="header">
- <a href="Default.htm" class="home">
+ <a href="" class="home">
             <span class="header-icon header-icon-home"></span>
             <span class="header-name">主页</span>
 </a>

@@ -10,9 +10,11 @@
 	}else{
 		$user = new User($userName,$password);
 		if( $user->isRegister() ){
-			echo "已经注册";
+			$url = "../../view/success.php?mess=注册成功";
+			Header("Location: $url");  
 		}else{
-			echo "未注册";
+			$url = "../../view/fail.php?mess=注册失败";
+			Header("Location: $url");  
 		}
 		
 		
