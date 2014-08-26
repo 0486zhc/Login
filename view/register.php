@@ -10,9 +10,29 @@
 
 	<script type="text/javascript" src="../js/zepto.js"></script>
 	<script type="text/javascript" src="../js/index.js"></script>
-
-
 </head>
+<script type="text/javascript">
+//	function checkRegister(){
+//		var userName = document.getElementById("userName").value;
+//		if(userName ==''){
+//			alert("用户名不能为空");
+//			return false;
+//		}
+//		
+//	}
+
+	function checkUserName(){
+		 var userNameError=document.getElementById("userNameError");
+     	var userName=document.getElementById("userName").value;
+     	if(userName ==''){
+     		userNameError.innerHTML= "邮箱格式不正确！";
+     	}else{
+     	}
+	}
+
+
+</script>
+
 <body>
 	<div class="header">
 		<a href="../index.jsp" class="home"> <span
@@ -28,7 +48,7 @@
 	<div class="container width80 pt20">
 		<form name="register" method="post"
 			action="../app/controller/registerAction.php"
-			id="aspnetForm" class="form-horizontal">
+			id="aspnetForm" class="form-horizontal" onclick = "return checkRegister()">
 			<div>
 				<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET"
 					value="" /> <input type="hidden" name="__EVENTARGUMENT"
@@ -59,40 +79,44 @@
 				<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
 					value="/wEWBQLZmqilDgLJ4fq4BwL90KKTCAKqkJ77CQKI+JrmBdPJophKZ3je4aKMtEkXL+P8oASc" />
 			</div> -->
-			<div class="control-group">
+			<div class="control-group" name = "a">
 				账号：<input name="userName" type="text"
-					id="ctl00_ContentPlaceHolder1_txtUserName" class="input width100 "
+					id="userName" class="input width100 "
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入身份证" />
+					placeholder="请输入身份证" onblur="checkUserName()"/>
 			</div>
+			<div  id="userNameError" align = "center"> </div>  
 			<div class="control-group">
 				密码：<input name="password" type="password"
-					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
+					id="password" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入密码" />
 			</div>
 			<div class="control-group">
 				姓名：<input name="name" type="text"
-					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
+					id="name" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入姓名" />
 			</div>
 			<div class="control-group">
 				性别：<input name="sex" type="text"
-					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
+					id="sex" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入性别" />
 			</div>
 			
 			<div class="control-group">
 				联系方式：<input name="mobile" type="text"
-					id="ctl00_ContentPlaceHolder1_txtPassword" class="width100 input"
+					id="mobile" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
 					placeholder="请输入手机号码" />
 			</div>
 			<div class="control-group">
 				<span class="red"></span>
 			</div>
+			
+			<a><span class="fade" id="pwdError"></span></a>
+			
 			<div class="control-group">
 				<button onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnOK','')"
 					id="ctl00_ContentPlaceHolder1_btnOK"
