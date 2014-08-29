@@ -158,6 +158,20 @@
 				}
 			$this->close();
 			return $resultName;
-		    }
+		}
+		
+		/* 
+		 * @description: 取得一个table的所有记录
+		 * @param: $tbName 表名
+		 * @return：记录的总数
+		 */
+		public function getTotalCount($tableName){
+			$sql = "select count(*) from ".$tableName;
+			$this->open();
+			$result = mysql_query($sql);
+			list($count)=mysql_fetch_row($result);
+			return $count;
+		}
+		
 	}
 	?>

@@ -15,9 +15,12 @@
 	
 	$users = User::getAllUser();
 	
-	foreach($users as $u){
-//		echo $u->userName;
-		echo $u->webChatId;
-		echo "<br/>".$u->userName."<br/>".$u->password."<br/>".$u->name."<br/>".$u->sex."<br/>".$u->mobile."<br/>"; 
-	}
+	echo "总页数".User::getUsersCount();
+	
+	
+//	foreach($users as $u){
+////		echo $u->userName;
+//		echo $u->webChatId;
+//		echo "<br/>".$u->userName."<br/>".$u->password."<br/>".$u->name."<br/>".$u->sex."<br/>".$u->mobile."<br/>"; 
+//	}
 ?>

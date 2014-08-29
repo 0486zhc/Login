@@ -104,5 +104,22 @@ class User {
 		else
 			return false;
 	}
+	
+	/** 分页函数 */
+	public static function getUsersPage($page,$pageSize){
+		$db = new DB();
+		@ $data = $db->getObjListBySql("select * from user limit ".$page.",".$pageSize);
+		if(count($data) != 0  ){
+			return $data ;
+		}else{
+			return null;
+		}
+	}
+	
+	public static function getUsersCount(){
+		$db = new DB();
+		@ $data = $db -> getTotalCount("user");
+		return $data;
+	}	
 }
 ?>
