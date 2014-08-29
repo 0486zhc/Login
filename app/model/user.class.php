@@ -45,7 +45,7 @@ class User {
 		$this->name = $name;
 		$this->sex = $sex;
 		$this->mobile= $mobile;
-		$this->webChatId;
+		$this->webChatId = $webChatId;
 	}
 
 	public function insert() {

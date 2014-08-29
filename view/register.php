@@ -10,28 +10,8 @@
 
 	<script type="text/javascript" src="../js/zepto.js"></script>
 	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/my.js"></script>
 </head>
-<script type="text/javascript">
-//	function checkRegister(){
-//		var userName = document.getElementById("userName").value;
-//		if(userName ==''){
-//			alert("用户名不能为空");
-//			return false;
-//		}
-//		
-//	}
-
-	function checkUserName(){
-		 var userNameError=document.getElementById("userNameError");
-     	var userName=document.getElementById("userName").value;
-     	if(userName ==''){
-     		userNameError.innerHTML= "邮箱格式不正确！";
-     	}else{
-     	}
-	}
-
-
-</script>
 
 <body>
 	<div class="header">
@@ -44,11 +24,10 @@
 			class="header-name">返回</span> </a>
 	</div>
 
-
 	<div class="container width80 pt20">
 		<form name="register" method="post"
 			action="../app/controller/registerAction.php"
-			id="aspnetForm" class="form-horizontal" onclick = "return checkRegister()">
+			id="aspnetForm" class="form-horizontal" onsubmit = "checkRegister();">
 			<div>
 				<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET"
 					value="" /> <input type="hidden" name="__EVENTARGUMENT"
@@ -57,70 +36,59 @@
 					value="/wEPDwUKLTE4MTUwOTMzMA9kFgJmD2QWAgIBD2QWAgIBD2QWAgILDxYCHgRocmVmBSwvUmVnLmFzcHg/UmV0dXJuVXJsPSUyZk1lbWJlciUyZkRlZmF1bHQuYXNweGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFJmN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY2JTYXZlQ29va2ll5P758eqt18XT06y04yVxkKJyzYw=" />
 			</div>
 
-			<script type="text/javascript">
-				//         
-				var theForm = document.forms['aspnetForm'];
-				if (!theForm) {
-					theForm = document.aspnetForm;
-				}
-				function __doPostBack(eventTarget, eventArgument) {
-					if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-						theForm.__EVENTTARGET.value = eventTarget;
-						theForm.__EVENTARGUMENT.value = eventArgument;
-						theForm.submit();
-					}
-				}
-				//
-			</script>
-
-
-			<!-- <div>
-
-				<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
-					value="/wEWBQLZmqilDgLJ4fq4BwL90KKTCAKqkJ77CQKI+JrmBdPJophKZ3je4aKMtEkXL+P8oASc" />
-			</div> -->
+			<input type="hidden" name="webChatId" id="webChatId" placeholder="id" value="<?php echo $_GET['webChatId'] ?>">
+			
 			<div class="control-group" name = "a">
 				账号：<input name="userName" type="text"
 					id="userName" class="input width100 "
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入身份证" onblur="checkUserName()"/>
+					placeholder="请输入账号" onblur="checkUserName()"/>
 			</div>
-			<div  id="userNameError" align = "center"> </div>  
+			<div  id="userNameError" align = "center" style="color:#F00" > </div>  
+			
 			<div class="control-group">
 				密码：<input name="password" type="password"
 					id="password" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入密码" />
+					placeholder="请输入密码" onblur="checkPassword()"/>
 			</div>
+			<div  id="passwordError" align = "center" style="color:#F00" > </div>
+			
 			<div class="control-group">
-				姓名：<input name="name" type="text"
+				真实姓名：<input name="name" type="text"
 					id="name" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入姓名" />
+					placeholder="请输入真实姓名" onblur = "checkName()"/>
 			</div>
+			<div  id="nameError" align = "center" style="color:#F00" > </div>
+			
 			<div class="control-group">
-				性别：<input name="sex" type="text"
+				性别：&nbsp;&nbsp;<input name="sex" type="radio"
 					id="sex" class="width100 input"
-					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入性别" />
+					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px" value="男" checked/>男
+					&nbsp;&nbsp;&nbsp;
+					<input name="sex" type="radio"
+					id="sex" class="width100 input"
+					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px" value="女" checked/>女
 			</div>
+			<div  i
 			
 			<div class="control-group">
 				联系方式：<input name="mobile" type="text"
 					id="mobile" class="width100 input"
 					style="background: none repeat scroll 0 0 #F9F9F9;padding: 8px 0px 8px 4px"
-					placeholder="请输入手机号码" />
+					placeholder="请输入手机号码" onblur = "checkMobile()"/>
 			</div>
+			<div  id="mobileError" align = "center" style="color:#F00" > </div>
+			
 			<div class="control-group">
 				<span class="red"></span>
 			</div>
 			
-			<a><span class="fade" id="pwdError"></span></a>
-			
 			<div class="control-group">
 				<button onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnOK','')"
 					id="ctl00_ContentPlaceHolder1_btnOK"
-					class="btn-large green button width100">立即注册</button>
+					class="btn-large green button width100" onClick="checkRegister()">立即注册</button>
 			</div>
 			
 		</form>
