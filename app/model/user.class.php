@@ -62,17 +62,18 @@ class User {
 		return $resultid;
 	}
 
-	public function isRegister(){
+	public function login(){
 		$db = new DB();
 		$userName = $this->userName;
 		$password = $this->password;
 		@ $data = $db->getObjListBySql("SELECT * FROM user WHERE userName = '$userName' and password = '$password' ");
+		
 		if (count($data) != 0)
-			return true;
+			return $data[0]->userName;
 		else
-			return false;	
+			return null;	
 	}
-
+	
 	public static function getUserById($uid) {
 		$db = new DB();
 		return $db->getDataByAtr("user", 'id', $uid);

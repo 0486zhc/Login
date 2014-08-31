@@ -4,16 +4,19 @@
 
 	$userName = $_POST["userName"];
 	$password = $_POST["password"];
-
+	$flag = $_POST["flag"];
+	
+	
 	if( $userName==null || $password == null ){
 		echo "<script>alert('请输入用户名或密码！'); history.go(-1);</script>";  
 	}else{
 		$user = new User($userName,$password);
-		if( $user->isRegister() ){
-			$url = "../../view/success.php?mess=注册成功";
+		$userName = $user->login();
+		if( $userName == null ){
+			$url = "../../view/fail.php?mess=登录失败";
 			Header("Location: $url");  
 		}else{
-			$url = "../../view/fail.php?mess=注册失败";
+			$url = "../../view/success.php?mess=".$userName;
 			Header("Location: $url");  
 		}
 		
